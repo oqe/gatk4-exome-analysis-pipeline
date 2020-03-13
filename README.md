@@ -1,4 +1,9 @@
 # gatk4-exome-analysis-pipeline
+
+## Forked Purpose:
+Added index input to several tasks that require them, but for some reason did not have any, which lead to workflow failing.
+---
+
 ### Purpose :
 This WDL pipeline implements data pre-processing and initial variant calling according to the GATK Best Practices for germline SNP and Indel discovery in human exome sequencing data.
 
