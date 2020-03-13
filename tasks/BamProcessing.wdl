@@ -185,7 +185,7 @@ task MarkDuplicatesSpark {
       ~{"--read-name-regex " + read_name_regex} \
       --optical-duplicate-pixel-distance 2500 \
       --treat-unsorted-as-querygroup-ordered \
-      --create-output-bam-index false \
+      --create-output-bam-index true \
       -- --conf spark.local.dir=/mnt/tmp --spark-master 'local[16]' --conf 'spark.kryo.referenceTracking=false'
   >>>
 
@@ -208,6 +208,7 @@ task MarkDuplicatesSpark {
 task BaseRecalibrator {
   input {
     File input_bam
+    File input_bam_index
     String recalibration_report_filename
     Array[String] sequence_group_interval
     File dbsnp_vcf
@@ -260,6 +261,7 @@ task BaseRecalibrator {
 task ApplyBQSR {
   input {
     File input_bam
+    File input_bam_index
     String output_bam_basename
     File recalibration_report
     Array[String] sequence_group_interval
